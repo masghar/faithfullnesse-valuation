@@ -44,12 +44,10 @@ st.sidebar.write(f"Using device: **{DEVICE}**")
 # Load model / tokenizer
 # -----------------------
 @st.cache_resource
-def load_model_and_tokenizer(
-    model_name="roberta-large-mnli"  # lighter + safer for Streamlit Cloud
-):
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForSequenceClassification.from_pretrained(model_name)
-    model.to(DEVICE)
+def load_model_and_tokenizer(model_name="roberta-large-mnli"):
+    tokenizer = AutoTokenizer.from_pretrained(model_name, token=HF_TOKEN)
+    model = AutoModelForSequenceClassification.from_pretrained(model_name, token=HF_TOKEN)
+    model.to(torch.device("cpu"))
     model.eval()
     return tokenizer, model
 

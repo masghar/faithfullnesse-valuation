@@ -10,6 +10,7 @@ import nltk
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from datasets import Dataset
 from nltk.corpus import wordnet as wn
+HF_TOKEN = st.secrets["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"]
 
 # -----------------------
 # Streamlit config
@@ -44,7 +45,7 @@ st.sidebar.write(f"Using device: **{DEVICE}**")
 # -----------------------
 @st.cache_resource
 def load_model_and_tokenizer(
-    model_name="roberta-base-mnli"  # lighter + safer for Streamlit Cloud
+    model_name="roberta-large-mnli"  # lighter + safer for Streamlit Cloud
 ):
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForSequenceClassification.from_pretrained(model_name)

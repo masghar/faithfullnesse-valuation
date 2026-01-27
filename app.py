@@ -10,7 +10,7 @@ import nltk
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from datasets import Dataset
 from nltk.corpus import wordnet as wn
-HF_TOKEN = st.secrets["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"]
+HF_TOKEN = st.secrets["HF_TOKEN"]
 
 # -----------------------
 # Streamlit config

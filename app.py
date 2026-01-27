@@ -10,7 +10,10 @@ import nltk
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from datasets import Dataset
 from nltk.corpus import wordnet as wn
+
+from huggingface_hub import login
 HF_TOKEN = st.secrets["HF_TOKEN"]
+login(token=HF_TOKEN)
 
 # -----------------------
 # Streamlit config
